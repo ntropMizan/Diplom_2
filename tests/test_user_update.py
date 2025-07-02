@@ -1,6 +1,8 @@
 import requests
+import pytest
 import allure
-from tests.data import BASE_URL, USER_VALID, MSG_UNAUTHORIZED
+from tests.data import USER_VALID, MSG_UNAUTHORIZED
+from urls import BASE_URL
 
 @allure.feature("Изменение данных пользователя")
 class TestUserUpdate:

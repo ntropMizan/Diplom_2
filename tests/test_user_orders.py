@@ -1,6 +1,8 @@
 import requests
+import pytest
 import allure
-from tests.data import BASE_URL, MSG_UNAUTHORIZED
+from tests.data import MSG_UNAUTHORIZED
+from urls import BASE_URL
 
 @allure.feature("Получение заказов пользователя")
 class TestUserOrders:

@@ -1,7 +1,5 @@
 # Константы и тестовые данные для API-тестов
 
-BASE_URL = "https://stellarburgers.nomoreparties.site"
-
 # Примеры тестовых данных для пользователей
 USER_VALID = {
     "email": "test_user@example.com",

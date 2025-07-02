@@ -1,12 +1,23 @@
 import requests
 import allure
-from tests.data import BASE_URL, USER_VALID, USER_INVALID, USER_ALREADY_EXISTS_EMAIL, MSG_USER_EXISTS, MSG_MISSING_FIELD
+from tests.data import USER_VALID, USER_INVALID, USER_ALREADY_EXISTS_EMAIL, MSG_USER_EXISTS, MSG_MISSING_FIELD
+from helpers import generate_unique_user
+from urls import BASE_URL
 
 @allure.feature("Регистрация пользователя")
 class TestUserRegistration:
     @allure.title("Создание уникального пользователя")
-    def test_create_unique_user(self, create_and_delete_user):
-        assert 'accessToken' in create_and_delete_user
+    def test_create_unique_user(self):
+        user_data = generate_unique_user()
+        response = requests.post(f"{BASE_URL}/api/auth/register", json=user_data)
+        assert response.status_code == 200
+        result = response.json()
+        assert 'accessToken' in result
+        # Удаление пользователя после теста
+        if 'accessToken' in result:
+            token = result['accessToken']
+            headers = {"Authorization": token}
+            requests.delete(f"{BASE_URL}/api/auth/user", headers=headers)
 
     @allure.title("Создание пользователя, который уже зарегистрирован")
     def test_create_existing_user(self):

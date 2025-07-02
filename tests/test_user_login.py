@@ -1,6 +1,8 @@
 import requests
+import pytest
 import allure
-from tests.data import BASE_URL, USER_VALID, MSG_LOGIN_INVALID
+from tests.data import USER_VALID, MSG_LOGIN_INVALID
+from urls import BASE_URL
 
 @allure.feature("Логин пользователя")
 class TestUserLogin:

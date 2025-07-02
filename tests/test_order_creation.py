@@ -1,6 +1,8 @@
 import requests
+import pytest
 import allure
-from tests.data import BASE_URL, ORDER_INGREDIENTS, ORDER_INVALID_INGREDIENTS, MSG_INGREDIENTS_REQUIRED, MSG_UNAUTHORIZED
+from tests.data import ORDER_INGREDIENTS, ORDER_INVALID_INGREDIENTS, MSG_INGREDIENTS_REQUIRED, MSG_UNAUTHORIZED
+from urls import BASE_URL
 
 @allure.feature("Создание заказа")
 class TestOrderCreation:
